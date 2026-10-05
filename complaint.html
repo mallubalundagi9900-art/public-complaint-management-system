@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submit Complaint</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <h1>Submit a Complaint</h1>
+    <p>Welcome, {{ user.name }}!</p>
+
+    <form action="/complaint" method="POST">
+
+        <label>Complaint Title:</label>
+        <input type="text" name="title"
+               placeholder="Enter complaint title" required>
+
+        <br><br>
+
+        <label>Description:</label>
+        <br>
+        <textarea name="description"
+                  placeholder="Describe your complaint"
+                  rows="5"
+                  cols="40"
+                  required></textarea>
+
+        <br><br>
+
+        <label>Location:</label>
+        <input type="text" name="location"
+               placeholder="Enter location" required>
+
+        <br><br>
+
+        <label>Category:</label>
+
+        <select name="category" required>
+            <option value="">Select category</option>
+            <option value="Road">Road</option>
+            <option value="Water">Water</option>
+            <option value="Electricity">Electricity</option>
+            <option value="Garbage">Garbage</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <br><br>
+
+        <button type="submit">Submit Complaint</button>
+
+    </form>
+<br><br>
+
+<a href="/my-complaints">
+    <button>My Complaints</button>
+</a>
+</body>
+</html>

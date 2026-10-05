@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Public Complaint Management System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <img src="{{ url_for('static', filename='complaint-image.png') }}" class="home-image">
+
+    
+
+    
+
+    <div class="home-card">
+
+        <h1>Public Complaint Management System</h1>
+
+        <p>
+            Welcome to the Public Complaint Management System.
+            Submit your complaint and track its status easily.
+        </p>
+
+        <div class="home-buttons">
+
+            <a href="/login">
+                <button>User Login</button>
+            </a>
+
+            <a href="/register">
+                <button>Register</button>
+            </a>
+
+            <a href="/admin-login">
+                <button>Admin Login</button>
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

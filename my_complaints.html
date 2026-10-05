@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Complaints</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <h1>My Complaints</h1>
+    <p>Welcome, {{ user.name }}!</p>
+
+    {% for complaint in complaints %}
+
+        <hr>
+
+        <p><strong>Title:</strong> {{ complaint.title }}</p>
+
+        <p><strong>Description:</strong> {{ complaint.description }}</p>
+
+        <p><strong>Location:</strong> {{ complaint.location }}</p>
+
+        <p><strong>Category:</strong> {{ complaint.category }}</p>
+
+        <p><strong>Status:</strong> {{ complaint.status }}</p>
+
+    {% else %}
+
+        <p>You have not submitted any complaints yet.</p>
+
+    {% endfor %}
+
+<br><br>
+
+<a href="/complaint">
+    <button>Back to Complaint</button>
+</a>
+<br><br>
+
+<a href="/logout">
+    <button>Logout</button>
+</a>
+</body>
+</html>
