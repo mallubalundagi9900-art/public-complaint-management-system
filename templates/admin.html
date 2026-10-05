@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <h1>Admin Dashboard</h1>
+    <div class="stats-container">
+
+    <div class="stat-box">
+        <h2>{{ total }}</h2>
+        <p>Total Complaints</p>
+    </div>
+
+    <div class="stat-box">
+        <h2>{{ pending }}</h2>
+        <p>Pending</p>
+    </div>
+
+    <div class="stat-box">
+        <h2>{{ in_progress }}</h2>
+        <p>In Progress</p>
+    </div>
+
+    <div class="stat-box">
+        <h2>{{ resolved }}</h2>
+        <p>Resolved</p>
+    </div>
+
+</div>
+
+    <h2>All Complaints</h2>
+
+    {% for complaint in complaints %}
+
+        <hr>
+
+        <p><strong>Title:</strong> {{ complaint.title }}</p>
+
+        <p><strong>Description:</strong> {{ complaint.description }}</p>
+
+        <p><strong>Location:</strong> {{ complaint.location }}</p>
+
+        <p><strong>Category:</strong> {{ complaint.category }}</p>
+
+        <p><strong>Current Status:</strong> {{ complaint.status }}</p>
+
+        <form action="/update-status/{{ complaint.id }}" method="POST">
+
+            <label>Change Status:</label>
+
+            <select name="status">
+
+                <option value="Pending"
+                    {% if complaint.status == "Pending" %}selected{% endif %}>
+                    Pending
+                </option>
+
+                <option value="In Progress"
+                    {% if complaint.status == "In Progress" %}selected{% endif %}>
+                    In Progress
+                </option>
+
+                <option value="Resolved"
+                    {% if complaint.status == "Resolved" %}selected{% endif %}>
+                    Resolved
+                </option>
+
+            </select>
+
+            <button type="submit">Update Status</button>
+
+        </form>
+
+    {% endfor %}
+
+    <br>
+
+    <a href="/admin-logout">
+        <button>Logout</button>
+    </a>
+
+</body>
+</html>
